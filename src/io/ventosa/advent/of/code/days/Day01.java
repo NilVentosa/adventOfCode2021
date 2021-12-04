@@ -24,10 +24,8 @@ public class Day01 extends Day {
         int result = 0;
 
         for (String str: numbers) {
-            if (prev != null) {
-                if (prev < Integer.parseInt(str)) {
-                    result++;
-                }
+            if (prev != null && prev < Integer.parseInt(str)) {
+                result++;
             }
             prev = Integer.parseInt(str);
         }
@@ -41,11 +39,9 @@ public class Day01 extends Day {
         Integer prev = null;
 
         for (int i =2; i < numbers.size(); i++) {
-            Integer current = Integer.parseInt(numbers.get(i)) + Integer.parseInt(numbers.get(i-1)) + Integer.parseInt(numbers.get(i-2));
-            if (prev != null) {
-                if (prev < current) {
-                    result++;
-                }
+            int current = Integer.parseInt(numbers.get(i)) + Integer.parseInt(numbers.get(i-1)) + Integer.parseInt(numbers.get(i-2));
+            if (prev != null && prev < current) {
+                result++;
             }
             prev = current;
         }

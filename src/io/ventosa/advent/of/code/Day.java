@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public abstract class Day {
     protected String inputFile;
 
     protected ArrayList<String> input;
+
+    protected static Logger LOGGER = Logger.getLogger("advent2021");
 
     protected Day(String inputFile) {
         this.inputFile = "resources/" + inputFile;
@@ -27,19 +30,19 @@ public abstract class Day {
     protected abstract void part2();
 
     protected ArrayList<String> getInput() {
-        ArrayList<String> input = new ArrayList<>();
+        ArrayList<String> result = new ArrayList<>();
         try {
             File myObj = new File(inputFile);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                input.add(data);
+                result.add(data);
             }
             myReader.close();
         }
-        catch (FileNotFoundException e) {
+        catch (FileNotFoundException ignored) {
         }
-        return input;
+        return result;
     }
 
     public static boolean arrayContains(String[] array, String str) {
